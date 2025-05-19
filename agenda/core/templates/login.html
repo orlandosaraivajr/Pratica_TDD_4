@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Práticas TDD 4">
+  <meta name="author" content="Orlando Saraiva do Nascimento Júnior">
+  <title>Login Práticas TDD 4</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 700px; /* Aumentado aqui */
+    }
+
+    .login-icon {
+      font-size: 3rem;
+      color: #0d6efd;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+
+    .form-label {
+      margin-top: 1rem;
+    }
+
+
+
+    .warning-icon {
+      font-size: 3rem;
+      color: #dc3545;
+    }
+
+    .btn-back {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card p-4 text-center bg-light text-dark">
+      <div class="login-card text-center">
+        <i class="fas fa-user-circle login-icon"></i>
+        <h4 class="mb-2">Bem-vindo!</h4>
+        <p class="text-muted mb-4">Acesse o sistema Práticas TDD 4</p>
+
+        <form action="{% url 'login' %}" method="POST">
+          {% csrf_token %}
+          
+          {% if form.non_field_errors %}
+          <div class="alert alert-danger text-start">
+            {% for error in form.non_field_errors %}
+              <p class="mb-0">{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+        <div class="mb-3 text-start">
+          <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
+          {{ form.email }}
+          {% if form.email.errors %}
+            <div class="text-danger small mt-1">
+              {% for error in form.email.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        
+        <div class="mb-3 text-start">
+          <label for="{{ form.password.id_for_label }}" class="form-label">{{ form.password.label }}</label>
+          {{ form.password }}
+          {% if form.password.errors %}
+            <div class="text-danger small mt-1">
+              {% for error in form.password.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+          <button type="submit" class="btn btn-primary w-100 mt-3">
+            <i class="fas fa-sign-in-alt me-2"></i> Acessar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
