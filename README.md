@@ -77,17 +77,17 @@ Com base no modelo implementado (ver imagem abaixo), você deve:
 <img src="model.png">
 
 
-✅ Criar um formulário para o modelo Contato (pode usar Forms ou ModelForms);
+✅ Criar um formulário para o modelo Agenda (pode usar Forms ou ModelForms);
 
 Implementar as seguintes funcionalidades:
 
-✅ Cadastrar contatos
+✅ Cadastrar contato
 
 ✅ Listar contatos
 
-✅ Atualizar contatos
+✅ Atualizar contato
 
-✅ Remover contatos
+✅ Remover contato
 
 Proteger todas essas funcionalidades para que apenas usuários logados tenham acesso.
 
